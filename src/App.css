@@ -1,38 +1,139 @@
-.App {
-  text-align: center;
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html,body{
+overflow-x: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.custom_navlink{
+  font-weight: 400;
+  font-size: 20px;
+  display: block;
+  padding: 10px !important;
+  color:#E0755E;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.custom_navlink:hover{
+  color: #E0755E;
+}
+
+.custom_links{
+  border-bottom: 3px solid lightgrey;
+  background-color: #E8E2D4;
+}
+
+.nav-item .active{
+  color:red;
+}
+
+.custom_label{
+  font-size: 20px;
+  color:#E0755E;
+}
+
+.custom_input{
+  font-size: 20px;
+}
+
+.custom_input:focus{
+  border: #E0755E;
+  box-shadow: inset 0 0.5px 0.5px #E0755E, 0 0 8px #E0755E;
+}
+
+.outer-form{
+  margin: auto;
+}
+
+.btn-custom{
+  background-color:#E0755E ;
+  border: #E0755E;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-custom:hover {
+  background-color:#E0755E ;
+  border: #E0755E;
+  box-shadow: inset 0 0.5px 0.5px #E0755E, 0 0 8px #E0755E;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-custom:active {
+  background-color:#E0755E ;
+  border: #E0755E;
+  box-shadow: inset 0 0.5px 0.5px #E0755E, 0 0 8px #E0755E;
+  color: white;
+}
+
+.formButton{
+  width: 99%;
+  position: relative;
+  left: -10px;
+  margin: 20px !important;
+  font-size: 20px;
+}
+
+.details{
+  width: 40%;
+}
+
+.addToCart{
+  width: 40%;
+}
+
+.card{
+  border-radius: 10px;
+  border: 2px solid #E8E2D4
+}
+
+.custom_card_image{
+  border-radius: 10px;
+  height: 200px;
+}
+
+.custom_heading{
+  color: #E0755E;
+  font-size: 20px;
+}
+
+.bold{
+  color: #E0755E;
+  /* font-weight: bold; */
+}
+
+.font-color{
+  color: #E0755E;
+}
+
+.font-24{
+  font-size: 22px;
+}
+
+.font-28{
+  color: #E0755E;
+  font-size: 28px;
+}
+
+/* Spinner */
+.loader {
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #E0755E;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
