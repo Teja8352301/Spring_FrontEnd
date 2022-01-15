@@ -137,3 +137,22 @@ overflow-x: hidden;
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.complete_view{
+  height: 90vh !important;
+  width: 90vw !important;
+  overflow: hidden;
+}
+
+.detail_div{
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail_Image{
+  width: 800px;
+  height: 600px;
+}
+

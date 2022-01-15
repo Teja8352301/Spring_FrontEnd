@@ -1,3 +1,3 @@
-const baseURL = 'http://localhost:8081/web/'
+const baseURL = 'http://localhost:8087/Maven/'
 
 module.exports =  baseURL

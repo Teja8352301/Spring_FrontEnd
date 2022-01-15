@@ -22,3 +22,32 @@ export const getTotalProducts = (apiPayload) =>{
         })
     }
 }
+
+export const getDetailProduct = (apiPayload) =>{
+    return (dispatch,getState)=>{
+        axiosInstance(apiPayload).then(res=>{
+            dispatch({type:actionTypes.getDetailProduct,data:res.data,spinner:false})
+        })
+    }
+}
+
+
+export const getAdminProducts = (apiPayload)=>{
+    return (dispatch,getState)=>{
+        axiosInstance(apiPayload).then(res=>{
+            dispatch({type:actionTypes.getAdminProducts,data:res.data,spinner:false})
+        })
+    }
+}
+
+export const deleteAdminProduct = (apiPayload) =>{
+    return (dispatch)=>{
+        dispatch({type:actionTypes.deleteAdminProduct,deleteId:apiPayload.productId})
+        axiosInstance(apiPayload).then(res=>{
+            let payload = {};
+            payload['method'] = 'GET'
+            payload['url'] = 'products/getAllProducts'
+            dispatch(getAdminProducts(payload))
+        })
+    }
+}

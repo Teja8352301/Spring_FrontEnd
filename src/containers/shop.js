@@ -14,7 +14,9 @@ export const Shop = (props) =>{
     const history = useHistory();
 
     if(!isEmpty(props.totalProducts.details)){
-        history.push(`/detail/${props.totalProducts.details}`)
+        setTimeout(()=>{
+            history.push(`/detail/${props.totalProducts.details}`)
+        },3000)
     }
 
     useEffect(()=>{
@@ -34,13 +36,15 @@ export const Shop = (props) =>{
     const viewProducts = (totalData) =>{
         return totalData.products.map((product,index)=>{
             return <Card key={index} unique={index} product={product} activeAddToCart = {totalData.addToCart} 
-            activeDetail={totalData.details} addToCart={props.addToCartMethod} addToDetail={props.addToDetailMethod}/>
+            activeDetail={totalData.details} addToCart={props.addToCartMethod} addToDetail={props.addToDetailMethod} adminPage={false}/>
         })
     }
     
     return <div className={"d-flex justify-content-around flex-wrap "} >
         {
-            props.totalProducts && props.totalProducts.products && !props.totalProducts.spinner ? viewProducts(props.totalProducts):<Spinner styling={{width:'100px',height:'100px',borderWidth:'10px'}}/>
+            props.totalProducts && props.totalProducts.products && !props.totalProducts.spinner ? viewProducts(props.totalProducts):<div className="d-flex align-items-center justify-content-center complete_view">
+                <Spinner styling={{width:'60px',height:'60px',borderWidth:'10px'}}/>
+                </div>
         }
         </div>
 }

@@ -8,5 +8,13 @@ export const actionTypes = {
     totalProductsAddtoCart:'TOTAL_PRODUCTS_ADD_TO_CART_BUTTON',
     totalProductsDetails:'TOTAL_PRODUCTS_DETAILS_BUTTON',
     clearTotalProductsAddToCart:'CLEAR_TOTAL_PRODUCTS_ADD_TO_CART_BUTTON',
-    clearTotalProductsDetails:'CLEAR_TOTAL_PRODUCTS_DETAILS_BUTTON'
+    clearTotalProductsDetails:'CLEAR_TOTAL_PRODUCTS_DETAILS_BUTTON',
+    getDetailProduct:'GET_DETAIL_PRODUCT',
+    clearDetailProduct:'CLEAR_DETAIL_PRODUCT',
+    getAdminProducts:'GET_ADMIN_PRODUCTS',
+    getAdminProductsSpinner:'GET_ADMIN_PRODUCTS_SPINNER',
+    updateAdminProduct:'UPDATE_ADMIN_PRODUCT',
+    deleteAdminProduct:'DELETE_ADMIN_PRODUCT',
+    clearAdminProducts:'CLEAR_ADMIN_PRODUCTS',
+
 }

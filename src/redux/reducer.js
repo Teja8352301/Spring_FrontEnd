@@ -57,3 +57,53 @@ export const getTotalProducts = (state = totalProductsInitial,action)=>{
             return state
     }
 }
+
+let detailProductInitial = {
+    product:{},
+    spinner:true
+}
+
+export const detailProductReducer = (state=detailProductInitial,action) =>{
+    switch (action.type) {
+        case actionTypes.getDetailProduct:
+            return {...state,product:action.data,spinner:action.spinner}
+
+        case actionTypes.clearDetailProduct:
+            return detailProductInitial
+        
+        default:
+           return state
+    }
+}
+
+let adminProductsInitial={
+    spinner:true,
+    products:[],
+    updateProduct:'',
+    deleteProduct:''
+}
+
+
+export const adminProductsReducer = (state=adminProductsInitial,action)=>{
+    switch(action.type){
+        case actionTypes.getAdminProducts:
+            return {...state,products:action.data,spinner:action.spinner}
+            
+        case actionTypes.getAdminProductsSpinner:
+            return {...state,spinner:action.spinner}
+
+        case actionTypes.updateAdminProduct:
+            return {...state,updateProduct:action.updateId}
+
+        case actionTypes.clearAdminProducts:{
+            return {...state,products:[],spinner:true,updateProduct:''}
+        }
+
+        case actionTypes.deleteAdminProduct:{
+            return {...state,deleteProduct:action.deleteId}
+        }
+
+        default:
+            return state
+    }
+}

@@ -14,8 +14,15 @@ export const Card = (props) =>{
                     <p className="font-color font-24">Price : ${props.product.price}</p>
                 </div>
                 <div className="card-footer text-muted d-flex justify-content-around">
+                    {!props.adminPage ? <>
                 {props.activeAddToCart != props.product.id ? <Button clicking={(e)=>props.addToCart(props.product.id)} type="submit" cssName={'addToCart'}>Add To Cart</Button>:<Spinner/>}
                 {props.activeDetail != props.product.id ? <Button clicking={(e)=>{props.addToDetail(props.product.id)}} type="submit" cssName={'details'}>Details</Button>:<Spinner/>}
+                </>:<>
+
+                {props.updatedProduct != props.product.id ? <Button clicking={(e)=>props.updateMethod(props.product.id)} type="submit" cssName={'addToCart'}>Update</Button>:<Spinner/>}
+                {props.deleteProduct != props.product.id ? <Button clicking={(e)=>{props.deleteMethod(props.product.id)}} type="submit" cssName={'details'}>Delete</Button>:<Spinner/>}
+
+                </>}
                 </div>
             </div>
     )
