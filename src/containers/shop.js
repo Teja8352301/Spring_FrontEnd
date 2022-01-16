@@ -1,5 +1,5 @@
 import React,{useEffect} from "react";
-import {getTotalProducts} from '../redux/thunk'
+import {getTotalProducts,addToCart} from '../redux/thunk'
 import {connect} from 'react-redux'
 import { Card } from "../components/card";
 import {Spinner} from '../components/spinner'
@@ -62,6 +62,7 @@ const mapDispatchToProps = (dispatch) =>{
         },
         addToCartMethod:(id)=>{
             dispatch({type:actionTypes.totalProductsAddtoCart,id:id})
+            dispatch(addToCart(addToCartPayloadConstruction(id),actionTypes.clearTotalProductsAddToCart))
         },
         addToDetailMethod:(id)=>{
             dispatch({type:actionTypes.totalProductsDetails,id:id})
@@ -70,6 +71,17 @@ const mapDispatchToProps = (dispatch) =>{
             dispatch({type:actionTypes.clearTotalProducts})
         }
     }
+}
+
+export let addToCartPayloadConstruction = (productId)=>{
+    let payload = {}
+    payload['method'] = 'POST'
+    payload['url'] = 'cart/addToCart'
+    payload['body'] = {
+        productId:productId
+    }
+
+    return payload
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Shop)

@@ -5,10 +5,11 @@ import {DetailHeading} from "../components/detailHeading"
 import {DetailImage} from '../components/detailImage'
 import {Spinner} from '../components/spinner'
 import {connect} from 'react-redux'
-import {getDetailProduct} from '../redux/thunk'
+import {addToCart, getDetailProduct} from '../redux/thunk'
 import {actionTypes} from '../redux/actionTypes'
 import { DetailHeadingH5 } from "../components/DetailHeadingH5";
 import {Button} from '../components/button'
+import { addToCartPayloadConstruction } from "./shop";
 
 
 const ProductDetail = (props) =>{
@@ -33,7 +34,9 @@ const ProductDetail = (props) =>{
             <DetailImage cssName={'detail_Image'} source={props.product && props.product.imageUrl || ""}/>
             <DetailHeadingH5 cssName={'m-3 font-color'}>{props.product && props.product.description || ""}</DetailHeadingH5>
             <DetailHeadingH5 cssName={'m-3 font-color'}>${props.product && props.product.price || ""}</DetailHeadingH5>
-            <Button cssName="m-2">Add To Cart</Button>
+            {props.addToCartSpinner? <Spinner/> :
+            <Button cssName="m-2" clicking={()=>{props.addToCartMethod(props.product.id)}}>Add To Cart</Button>
+        }
             </div>}
     </div>)
 }
@@ -41,7 +44,8 @@ const ProductDetail = (props) =>{
 const mapStateToProps = (state)=>{
     return {
         spinner:state.detailProduct.spinner,
-        product:state.detailProduct.product
+        product:state.detailProduct.product,
+        addToCartSpinner:state.detailProduct.addToCartSpinner
     }
 }
 
@@ -52,8 +56,13 @@ const mapDispatchToReducer = (dispatch) =>{
         },
         clearProductDetailData:()=>{
             dispatch({type:actionTypes.clearDetailProduct})
+        },
+        addToCartMethod:(id)=>{
+            dispatch({type:actionTypes.detailAddToCartProduct,id:id,spinner:true})
+            dispatch(addToCart(addToCartPayloadConstruction(id),actionTypes.detailCartSpinner))
         }
     }
 }
+
 
 export const Detail = connect(mapStateToProps,mapDispatchToReducer)(ProductDetail)

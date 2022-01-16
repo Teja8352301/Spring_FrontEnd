@@ -1,7 +1,6 @@
 import React from "react";
 import { Route,Switch } from "react-router-dom";
-// import { Card } from "../components/card";
-import { Cart } from "../components/cart";
+import { Cart } from "../containers/cart";
 import {AddProduct} from '../containers/add-product'
 import Shop from "../containers/shop";
 import {Redirect} from 'react-router'

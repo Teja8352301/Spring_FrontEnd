@@ -156,3 +156,12 @@ overflow-x: hidden;
   height: 600px;
 }
 
+.cart_outer{
+  width: 90vw;
+  height: 90vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

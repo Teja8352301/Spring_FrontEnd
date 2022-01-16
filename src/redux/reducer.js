@@ -60,13 +60,21 @@ export const getTotalProducts = (state = totalProductsInitial,action)=>{
 
 let detailProductInitial = {
     product:{},
-    spinner:true
+    spinner:true,
+    addToCartSpinner:false,
+    addToCart:''
 }
 
 export const detailProductReducer = (state=detailProductInitial,action) =>{
     switch (action.type) {
         case actionTypes.getDetailProduct:
             return {...state,product:action.data,spinner:action.spinner}
+
+        case actionTypes.detailAddToCartProduct:
+            return {...state,addToCartSpinner:true,addToCart:action.id}
+
+        case actionTypes.detailCartSpinner:
+            return {...state,addToCartSpinner:false}
 
         case actionTypes.clearDetailProduct:
             return detailProductInitial
@@ -103,6 +111,28 @@ export const adminProductsReducer = (state=adminProductsInitial,action)=>{
             return {...state,deleteProduct:action.deleteId}
         }
 
+        default:
+            return state
+    }
+}
+
+
+let initialCartItems = {
+    spinner:true,
+    cartitems:[]
+}
+
+export const cartItemsReducer = (state=initialCartItems,action)=>{
+    switch(action.type){
+        case actionTypes.loadCartItems:
+            return {...state,cartitems:action.data,spinner:false}
+        
+        case actionTypes.cartItemsSpinner:
+            return {...state,spinner:action.spinner}
+
+        case actionTypes.clearCartItems:
+            return initialCartItems
+        
         default:
             return state
     }

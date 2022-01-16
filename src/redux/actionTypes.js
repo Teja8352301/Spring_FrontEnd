@@ -16,5 +16,9 @@ export const actionTypes = {
     updateAdminProduct:'UPDATE_ADMIN_PRODUCT',
     deleteAdminProduct:'DELETE_ADMIN_PRODUCT',
     clearAdminProducts:'CLEAR_ADMIN_PRODUCTS',
-
+    loadCartItems:'LOAD_CART_ITEMS',
+    clearCartItems:'CLEAR_CART_ITEMS',
+    cartItemsSpinner:'CART_ITEMS_SPINNER',
+    detailCartSpinner:'DETAIL_CART_SPINNER',
+    detailAddToCartProduct:'DETAIL_ADD_TO_CART_PRODUCT'
 }

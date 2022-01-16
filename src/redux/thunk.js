@@ -51,3 +51,19 @@ export const deleteAdminProduct = (apiPayload) =>{
         })
     }
 }
+
+export const loadCartItems = (apiPayload)=>{
+    return (dispatch,getState)=>{
+        axiosInstance(apiPayload).then(res=>{
+            dispatch({type:actionTypes.loadCartItems,data:res.data,spinner:false})
+        })
+    }
+}
+
+export const addToCart = (apiPayload,actionType)=>{
+    return (dispatch,getState)=>{
+        axiosInstance(apiPayload).then(res=>{
+            dispatch({type:actionType})
+        })
+    }
+}
