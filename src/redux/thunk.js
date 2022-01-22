@@ -67,3 +67,14 @@ export const addToCart = (apiPayload,actionType)=>{
         })
     }
 }
+
+export const removeItemFromCart = (apiPayload)=>{
+    return (dispatch,getState)=>{
+        axiosInstance(apiPayload).then(res=>{
+            dispatch({type:actionTypes.loadCartItems,data:res.data,spinner:false})
+        })
+        .catch(err=>{
+            dispatch({type:actionTypes.cartItemsSpinner,spinner:false})
+        })
+    }
+}

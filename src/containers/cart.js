@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { Button } from "../components/button";
 import { Spinner } from "../components/spinner";
 import { actionTypes } from "../redux/actionTypes";
-import { loadCartItems } from "../redux/thunk";
+import { loadCartItems, removeItemFromCart } from "../redux/thunk";
+import {DetailHeading} from '../components/detailHeading'
 
 
 const CartItem = (props) =>{
@@ -22,12 +23,17 @@ const CartItem = (props) =>{
         <p className="font-28">The products found in the cart</p>
         <ul className="font-color font-24">
             {props.products.map((product,index)=>{
-                return <li key={index}>{product.productTitle}({product.quantity})</li>
+                let productId = product && product['productId'] && product['productId']['id'] || ''
+                return <div key={index}>
+                    <p key={index}>{product && product['productId'] && product['productId']['title']}({product.quantity})</p>
+                    <p className={' d-inline-block p-2'} style={{border:'2px dotted #E0755E'}}>$ {product.price}</p> <Button clicking={()=>{props.deleteCartItemFromList(productId)}} cssName="mx-4 d-inline-block">Delete</Button>
+                </div>
             })}
             
         </ul>
+        <DetailHeading cssName={'m-3 font-color'}>Total Price : {props.products[0] && props.products[0].cartId && props.products[0].cartId['totalPrice'] || ''}</DetailHeading>
         <Button cssName="mx-4">Order Now</Button>
-    </div> : 
+    </div> : !props.spinner && props.products.length == 0? <p className="font-28">The products found in the cart</p> :
     <div className="cart_outer"><Spinner styling={{width:'60px',height:'60px',borderWidth:'10px'}}/></div>
 }</>)
 }
@@ -46,6 +52,13 @@ const mapDispatchToProps = (dispatch)=>{
         },
         clearCartItemsList:()=>{
             dispatch({type:actionTypes.clearCartItems})
+        },
+        deleteCartItemFromList:(id)=>{
+            let payload={}
+            payload['body']={productId:id}
+            payload['method'] = 'DELETE'
+            payload['url'] = 'cart/deleteFromCart'
+            dispatch(removeItemFromCart(payload))
         }
     }
 }
