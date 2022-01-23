@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Button } from "../components/button";
 import { Spinner } from "../components/spinner";
 import { actionTypes } from "../redux/actionTypes";
-import { loadCartItems, removeItemFromCart } from "../redux/thunk";
+import { loadCartItems, removeItemFromCart,orderNow } from "../redux/thunk";
 import {DetailHeading} from '../components/detailHeading'
 
 
@@ -32,7 +32,7 @@ const CartItem = (props) =>{
             
         </ul>
         <DetailHeading cssName={'m-3 font-color'}>Total Price : {props.products[0] && props.products[0].cartId && props.products[0].cartId['totalPrice'] || ''}</DetailHeading>
-        <Button cssName="mx-4">Order Now</Button>
+        <Button cssName="mx-4" clicking={props.orderNowCart} disable={props.disable}>Order Now</Button>
     </div> : !props.spinner && props.products.length == 0? <p className="font-28">The products found in the cart</p> :
     <div className="cart_outer"><Spinner styling={{width:'60px',height:'60px',borderWidth:'10px'}}/></div>
 }</>)
@@ -41,7 +41,8 @@ const CartItem = (props) =>{
 const mapStateToProps = (state)=>{
     return{
         products:state.cartItems.cartitems,
-        spinner:state.cartItems.spinner
+        spinner:state.cartItems.spinner,
+        disable:state.cartItems.disable
     }
 }
 
@@ -59,6 +60,12 @@ const mapDispatchToProps = (dispatch)=>{
             payload['method'] = 'DELETE'
             payload['url'] = 'cart/deleteFromCart'
             dispatch(removeItemFromCart(payload))
+        },
+        orderNowCart:()=>{
+            let payload ={}
+            payload['method'] = 'GET'
+            payload['url']='order/orderNow'
+            dispatch(orderNow(payload))
         }
     }
 }

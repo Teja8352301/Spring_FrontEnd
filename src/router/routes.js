@@ -6,6 +6,8 @@ import Shop from "../containers/shop";
 import {Redirect} from 'react-router'
 import {Detail} from '../containers/detail'
 import {AdminProduct} from '../containers/admin-products'
+import { Orders } from "../containers/orders";
+
 
 
 
@@ -14,9 +16,8 @@ export const Routes = () =>{
         <Switch>
             <Redirect to="/shop" from="/" exact/>
             <Route path="/shop"><Shop/></Route>
-            <Route path="/products"><h1>Products</h1></Route>
             <Route path="/cart"><Cart/></Route>
-            <Route path="/orders"><h1>Orders</h1></Route>
+            <Route path="/orders"><Orders/></Route>
             <Route path="/admin/products"><AdminProduct/></Route>
             <Route path="/admin/addproduct/:productId"><AddProduct/></Route>
             <Route path="/admin/addproduct"><AddProduct/></Route>

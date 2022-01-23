@@ -78,3 +78,23 @@ export const removeItemFromCart = (apiPayload)=>{
         })
     }
 }
+
+export const orderNow = (apiPayload)=>{
+    return (dispatch)=>{
+        axiosInstance(apiPayload).then(res=>{
+        dispatch({type:actionTypes.disableOrderNowButton})
+        let payload = {}
+        payload['url'] = 'cart/getCartProducts'
+        payload['method'] = 'GET'
+        dispatch(loadCartItems(payload))
+    })
+    }
+}
+
+export const getOrder = (apiPayload)=>{
+    return (dispatch)=>{
+        axiosInstance(apiPayload).then(res=>{
+            dispatch({type:actionTypes.getOrderDetails,data:res.data && res.data.orders || [],spinner:false})
+        })
+    }
+}

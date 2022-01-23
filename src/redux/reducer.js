@@ -119,7 +119,8 @@ export const adminProductsReducer = (state=adminProductsInitial,action)=>{
 
 let initialCartItems = {
     spinner:true,
-    cartitems:[]
+    cartitems:[],
+    disable:false
 }
 
 export const cartItemsReducer = (state=initialCartItems,action)=>{
@@ -132,8 +133,31 @@ export const cartItemsReducer = (state=initialCartItems,action)=>{
 
         case actionTypes.clearCartItems:
             return initialCartItems
+
+        case actionTypes.disableOrderNowButton:
+            return {...state,disable:true}
         
         default:
             return state
+    }
+}
+
+
+const ordersInitialState = {
+    ordersList:[],
+    spinner:true
+}
+
+export const ordersReducer  = (state=ordersInitialState,action)=>{
+    switch(action.type){
+        case actionTypes.getOrderDetails:{
+            return {...state,ordersList:action.data,spinner:action.spinner}
+        }
+        case actionTypes.toggleSpinnerInOrders:{
+            return {...state,spinner:action.spinner}
+        }
+        default:{
+            return state
+        }
     }
 }

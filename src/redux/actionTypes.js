@@ -20,5 +20,8 @@ export const actionTypes = {
     clearCartItems:'CLEAR_CART_ITEMS',
     cartItemsSpinner:'CART_ITEMS_SPINNER',
     detailCartSpinner:'DETAIL_CART_SPINNER',
-    detailAddToCartProduct:'DETAIL_ADD_TO_CART_PRODUCT'
+    detailAddToCartProduct:'DETAIL_ADD_TO_CART_PRODUCT',
+    getOrderDetails:'GET_ORDER_DETAILS',
+    toggleSpinnerInOrders:'TOGGLE_SPINNER_IN_ORDERS',
+    disableOrderNowButton:'DISABLE_ORDER_NOW_BUTTON'
 }
