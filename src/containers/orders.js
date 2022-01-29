@@ -38,7 +38,7 @@ export const OrdersList = (props)=>{
     
         {props.orderList.ordersList.map((orderItem,index)=>{ return <div key={index}><Button cssName={'d-block m-3 p-2'} clicking={()=>{showModalMethod(orderItem.orderId)}}> orderId : {orderItem.orderId}</Button></div>})}
     </>
-    : props.orderList && props.orderList.ordersList && props.orderList.ordersList.length>0 &&  !props.orderList.spinner? 
+    : props.orderList && props.orderList.ordersList  &&  !props.orderList.spinner? 
     <h1 className="font-color">No Items Found</h1> : <Spinner/>
 }
     </>)

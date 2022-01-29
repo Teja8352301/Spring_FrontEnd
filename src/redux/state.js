@@ -1,7 +1,7 @@
 import {createStore,applyMiddleware,combineReducers} from 'redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import {addProductReducer,getTotalProducts,detailProductReducer,adminProductsReducer,cartItemsReducer,ordersReducer} from './reducer'
+import {addProductReducer,getTotalProducts,detailProductReducer,adminProductsReducer,cartItemsReducer,ordersReducer,loginValidator,loggedSessionReducer} from './reducer'
 
 const rootReducer = combineReducers({
   addProduct:addProductReducer,
@@ -9,7 +9,9 @@ const rootReducer = combineReducers({
   detailProduct:detailProductReducer,
   adminProducts:adminProductsReducer,
   cartItems:cartItemsReducer,
-  orders:ordersReducer
+  orders:ordersReducer,
+  login:loginValidator,
+  logged:loggedSessionReducer
 })
 
 export const reduxState = createStore(rootReducer,composeWithDevTools(applyMiddleware(thunk)))

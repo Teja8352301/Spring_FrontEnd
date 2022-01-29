@@ -1,5 +1,6 @@
 import {actionTypes} from './actionTypes'
 import axiosInstance from '../axiosInstance'
+const {sessionSave} = require('../utils/utils')
 
 export const addProductService = (apiPayload) =>{
     return (dispatch,getState)=>{
@@ -95,6 +96,22 @@ export const getOrder = (apiPayload)=>{
     return (dispatch)=>{
         axiosInstance(apiPayload).then(res=>{
             dispatch({type:actionTypes.getOrderDetails,data:res.data && res.data.orders || [],spinner:false})
+        })
+    }
+}
+
+export const validateLogin =  (apiPayload)=>{
+    return (dispatch)=>{
+        let success = false
+        dispatch({type:actionTypes.validateLoginSpinner,spinner:true,success:success})
+        axiosInstance(apiPayload).then(res=>{
+            if(res && res.headers && res.headers['jwt_token'] && res.headers['jwt_token'].length>0 && res.headers['authid'] && res.headers['authid'].length>0){
+                success = true
+            }
+            dispatch({type:actionTypes.validateLoginSuccess,spinner:false,success:success})
+            window.location.href="shop"
+        }).catch(err=>{
+            dispatch({type:actionTypes.validateLoginSuccess,spinner:false,success:false})
         })
     }
 }

@@ -33,7 +33,7 @@ const totalProductsInitial = {
 export const getTotalProducts = (state = totalProductsInitial,action)=>{
     switch (action.type) {
         case actionTypes.getTotalProducts:
-            return {...state,products:action.data,spinner:action.spinner,count:action.data.length}
+            return {...state,products:action.data,spinner:action.spinner,count:action.data && action.data.length || 0}
 
         case actionTypes.getTotalProductsSpinner:
             return {...state,spinner:action.spinner}
@@ -159,5 +159,37 @@ export const ordersReducer  = (state=ordersInitialState,action)=>{
         default:{
             return state
         }
+    }
+}
+
+const loginInitialiser = {
+    spinner:false,
+    success:false
+}
+
+export const loginValidator = (state=loginInitialiser,action)=>{
+    switch(action.type){
+        case actionTypes.validateLoginSpinner:{
+            return {...state,spinner:action.spinner}
+        }
+
+        case actionTypes.validateLoginSuccess:{
+            return {...state,spinner:action.spinner,success:action.success}
+        }
+        default:
+            return state
+    }
+}
+
+const logSessionInitial = {
+    loggedStatus:false
+}
+
+export const loggedSessionReducer = (state=logSessionInitial,action) => {
+    switch(action.type){
+        case actionTypes.toggleLoginSessionStorage:
+            return {...state,loggedStatus:action.logged}
+        default:
+            return {...state}
     }
 }

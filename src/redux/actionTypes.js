@@ -23,5 +23,8 @@ export const actionTypes = {
     detailAddToCartProduct:'DETAIL_ADD_TO_CART_PRODUCT',
     getOrderDetails:'GET_ORDER_DETAILS',
     toggleSpinnerInOrders:'TOGGLE_SPINNER_IN_ORDERS',
-    disableOrderNowButton:'DISABLE_ORDER_NOW_BUTTON'
+    disableOrderNowButton:'DISABLE_ORDER_NOW_BUTTON',
+    validateLoginSpinner:"VALIDATE_LOGIN_SPINNER",
+    validateLoginSuccess:"VALIDATE_LOGIN_SUCCESS",
+    toggleLoginSessionStorage:'TOGGLE_LOGIN_SESSION_STORAGE'
 }
