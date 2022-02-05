@@ -102,16 +102,28 @@ export const getOrder = (apiPayload)=>{
 
 export const validateLogin =  (apiPayload)=>{
     return (dispatch)=>{
-        let success = false
-        dispatch({type:actionTypes.validateLoginSpinner,spinner:true,success:success})
+        dispatch({type:actionTypes.validateLoginSpinner,spinner:true,success:false})
         axiosInstance(apiPayload).then(res=>{
             if(res && res.headers && res.headers['jwt_token'] && res.headers['jwt_token'].length>0 && res.headers['authid'] && res.headers['authid'].length>0){
-                success = true
+                dispatch({type:actionTypes.validateLoginSuccess,spinner:false,success:true})
+                window.location.href="shop"
             }
-            dispatch({type:actionTypes.validateLoginSuccess,spinner:false,success:success})
-            window.location.href="shop"
+            else{
+                dispatch({type:actionTypes.validateLoginSuccess,spinner:false,success:false})
+            }
         }).catch(err=>{
             dispatch({type:actionTypes.validateLoginSuccess,spinner:false,success:false})
+        })
+    }
+}
+
+export const registerUser = (apiPayload)=>{
+    return (dispatch)=>{
+        dispatch({type:actionTypes.registerUserSpinner,spinner:true})
+        axiosInstance(apiPayload).then(res=>{
+            dispatch({type:actionTypes.registerUser,spinner:false})
+        }).catch(err=>{
+
         })
     }
 }

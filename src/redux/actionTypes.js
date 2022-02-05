@@ -26,5 +26,7 @@ export const actionTypes = {
     disableOrderNowButton:'DISABLE_ORDER_NOW_BUTTON',
     validateLoginSpinner:"VALIDATE_LOGIN_SPINNER",
     validateLoginSuccess:"VALIDATE_LOGIN_SUCCESS",
-    toggleLoginSessionStorage:'TOGGLE_LOGIN_SESSION_STORAGE'
+    toggleLoginSessionStorage:'TOGGLE_LOGIN_SESSION_STORAGE',
+    registerUser:'REGISTER_USER',
+    registerUserSpinner:'REGISTER_USER_SPINNER'
 }

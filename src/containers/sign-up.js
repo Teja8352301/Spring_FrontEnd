@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import {Input} from '../components/input'
 import {Label} from '../components/label'
 import {Button} from '../components/button'
+import { connect } from 'react-redux'
 
 
-export const SignUp = (props) =>{
+export const SignUps = (props) =>{
 
     const fieldsChange = (event,field)=>{
         let newSignUpState = {...signUpState}
@@ -13,16 +14,15 @@ export const SignUp = (props) =>{
     }
 
     const [signUpState,setSignUpState] = useState({
-        fullname:'',
         email:'',
         password:''
     })
     return <div>
         
-        <div className="form-group mx-2 my-1">
+        {/* <div className="form-group mx-2 my-1">
     <Label for="fullname">Full Name:</Label>   
     <Input cssName={'form-control'} for="fullname" value={signUpState['fullname']} type={"text"} fieldsChange = {e=>{fieldsChange(e,'fullname')}} /> 
-</div>
+</div> */}
 
     <div className="form-group mx-2 my-1">
     <Label for="email">Email:</Label>
@@ -35,3 +35,19 @@ export const SignUp = (props) =>{
     <Button cssName={'formButton'}>SignUp</Button>
     </div>
 }
+
+const mapStateToProps = (state) =>{
+    return {
+
+    }
+}
+
+const mapDispatchToProps = (dispatch)=>{
+    return {
+        registerUser:(apiPayload)=>{
+            
+        }
+    }
+}
+
+export const SignUp = connect(mapStateToProps,mapDispatchToProps)(SignUps)
